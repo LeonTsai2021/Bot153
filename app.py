@@ -54,7 +54,7 @@ def handle_message(event):
             columns=[ 
                     CarouselColumn( 
                         thumbnail_image_url ="https://chenchenhouse.com//wp-content/uploads/2020/10/%E5%9C%96%E7%89%871-2.png",
-                        title = message + " 股票資訊", 
+                        title = msg + " 股票資訊", 
                         text ="請點選想查詢的股票資訊", 
                         actions =[
                             MessageAction( 
