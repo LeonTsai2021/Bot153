@@ -36,7 +36,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg = event.message.text
+    msg = text= event.message.text
     reply = ''
 
     if "你要去哪裡" in msg:
@@ -81,15 +81,15 @@ def handle_message(event):
                         ),
                         CarouselColumn( 
                             thumbnail_image_url ="https://external-preview.redd.it/sE2_6uZFii80RFYt5s8n8jAngSnC130BAp1HSrca404.jpg?width=640&crop=smart&auto=webp&s=fe7b27b198634080b3156862a82e2bff993a9b1b",
-                            title = msg[3:] + " 股利資訊", 
+                            title = msg[3:] + " 法人買賣超", 
                             text ="請點選想查詢的股票資訊", 
                             actions =[
                                 MessageAction( 
-                                    label= msg[3:] + " 平均股利",
-                                    text= "平均股利 " + msg[3:]),
+                                    label= msg[3:] + " 大戶籌碼",
+                                    text= "大戶籌碼 " + msg[3:]),
                                 MessageAction( 
-                                    label= msg[3:] + " 歷年股利",
-                                    text= "歷年股利 " + msg[3:])
+                                    label= msg[3:] + " 同業排名",
+                                    text= "同業排名 " + msg[3:])
                             ]
                         ),                               
                     ]
@@ -101,25 +101,18 @@ def handle_message(event):
         
         
     if '大戶籌碼 ' in msg:
-        flex_message = TextSendMessage(text="請選擇要顯示的買賣超資訊",
-                                       quick_reply=QuickReply(items=[
-                                           QuickReplyButton(action=MessageAction(
-                                               label="最新法人", text="最新法人買賣超 " + msg[5:])),
-                                           QuickReplyButton(action=MessageAction(
-                                               label="歷年法人", text="歷年法人買賣超 " + msg[5:])),
-                                           QuickReplyButton(action=MessageAction(
-                                               label="外資", text="外資買賣超 " + msg[5:])),
-                                           QuickReplyButton(action=MessageAction(
-                                               label="投信", text="投信買賣超 " + msg[5:])),
-                                           QuickReplyButton(action=MessageAction(
-                                               label="自營商", text="自營商買賣超 " + msg[5:])),
-                                           QuickReplyButton(action=MessageAction(
-                                               label="三大法人", text="三大法人買賣超 " + msg[5:]))
-                                       ]))
-        line_bot_api.reply_message(event.reply_token, flex_message)
+         flex_message = TextSendMessage(text="請選擇要顯示的買賣超資訊", 
+                                    quick_reply=QuickReply(items=[ 
+                                        QuickReplyButton(action=MessageAction(label="最新法人", text="最新法人買賣超 " + msg[5:])),
+                                        QuickReplyButton(action=MessageAction(label="歷年法人", text="歷年法人買賣超 " + msg[5:])),
+                                        QuickReplyButton(action=MessageAction(label="外資", text="外資買賣超 " + msg[5:])),
+                                        QuickReplyButton(action=MessageAction(label="投信", text="投信買賣超 " + msg[5:])),
+                                        QuickReplyButton(action=MessageAction(label="自營商", text="自營商買賣超 " + msg[5:])),
+                                        QuickReplyButton(action=MessageAction(label="三大法人", text="三大法人買賣超 " + msg[5:]))
+                                    ]))
+         line_bot_api.reply_message(event.reply_token, flex_message)
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
-
+         line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
     if '你是誰' in msg:
         sticker_message = StickerSendMessage(
             package_id='1070',
