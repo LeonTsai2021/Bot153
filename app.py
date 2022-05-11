@@ -38,12 +38,12 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg=event.message.text
-    reply='不好意思，你說什麼?'
+    reply=''
     
-    if '貼圖' in msg:
+    if '你是誰' in msg:
         sticker_message = StickerSendMessage(
-            package_id='1',
-            sticker_id='1'
+            package_id='1070',
+            sticker_id='17878'
         )
         
         line_bot_api.reply_message(
@@ -55,11 +55,13 @@ def handle_message(event):
         reply='嗨!'
     elif msg == '你在做什麼':
         reply='聊天'
-    elif msg == '你是誰':
-        reply='我是支援型機器人153'
+    elif msg == '型號':
+        reply='支援型機器人153'
     elif msg == '定位':
         reply='你想定位你目前的位置嗎?'
 
+    else:
+        reply='不好意思，你說什麼?'
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=reply))
