@@ -68,7 +68,8 @@ def handle_message(event):
         reply='支援型機器人153'
     elif msg == '定位':
         reply='你想定位你目前的位置嗎?'
-
+    elif msg == '新聞':
+        reply='https://www.youtube.com/watch?v=_QbRXRnHMVY&ab_channel=%E4%B8%AD%E5%A4%A9%E9%9B%BB%E8%A6%96'
     else:
         reply='不好意思，你說什麼?'
     line_bot_api.reply_message(
