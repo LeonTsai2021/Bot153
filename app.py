@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage
 )
 
 app = Flask(__name__)
@@ -37,10 +37,32 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    msg=event.message.text
+    reply='不好意思，你說什麼?'
+    
+    if '貼圖' in msg:
+        sticker_message = StickerSendMessage(
+            package_id='1',
+            sticker_id='1'
+        )
+        
+        line_bot_api.reply_message(
+            event.reply_token,
+            sticker_message)
+        return
+    
+    if msg in ['hi','Hi','嗨']:
+        reply='嗨!'
+    elif msg == '你在做什麼':
+        reply='聊天'
+    elif msg == '你是誰':
+        reply='我是支援型機器人153'
+    elif msg == '定位':
+        reply='你想定位你目前的位置嗎?'
+
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
-
+        TextSendMessage(text=reply))
 
 if __name__ == "__main__":
     app.run()
