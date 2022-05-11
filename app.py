@@ -53,7 +53,7 @@ def handle_message(event):
         template=CarouselTemplate( 
             columns=[ 
                     CarouselColumn( 
-                        thumbnail_image_url ="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fnier%2Fcomments%2F8oxstj%2Fpod_042_153%2F&psig=AOvVaw2uz9qW-LukuXwPqMeOx04F&ust=1652369861144000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCJCGysbj1_cCFQAAAAAdAAAAABAD",
+                        thumbnail_image_url ="https://external-preview.redd.it/sE2_6uZFii80RFYt5s8n8jAngSnC130BAp1HSrca404.jpg?width=640&crop=smart&auto=webp&s=fe7b27b198634080b3156862a82e2bff993a9b1b",
                         title = msg + " 股票資訊", 
                         text ="請點選想查詢的股票資訊", 
                         actions =[
