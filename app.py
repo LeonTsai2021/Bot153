@@ -50,29 +50,56 @@ def handle_message(event):
 
     if "股票 " in msg:
         buttons_template_message = TemplateSendMessage(
-            alt_text="股票資訊",
-            template=CarouselTemplate(
-                columns=[
-                    CarouselColumn(
-                        thumbnail_image_url="https://external-preview.redd.it/sE2_6uZFii80RFYt5s8n8jAngSnC130BAp1HSrca404.jpg?width=640&crop=smart&auto=webp&s=fe7b27b198634080b3156862a82e2bff993a9b1b",
-                        title=msg + " 股票資訊",
-                        text="請點選想查詢的股票資訊",
-                        actions=[
-                            MessageAction(
-                                label=msg[3:] + " 個股資訊",
-                                text="個股資訊 " + msg[3:]),
-                            MessageAction(
-                                label=msg[3:] + " 個股新聞",
-                                text="個股新聞 " + msg[3:])
-                        ]
-                    )
-                ]
+        alt_text = "股票資訊",
+        template=CarouselTemplate( 
+            columns=[ 
+                CarouselColumn( 
+                            thumbnail_image_url ="https://external-preview.redd.it/sE2_6uZFii80RFYt5s8n8jAngSnC130BAp1HSrca404.jpg?width=640&crop=smart&auto=webp&s=fe7b27b198634080b3156862a82e2bff993a9b1b",
+                            title = msg[3:] + " 股票資訊", 
+                            text ="請點選想查詢的股票資訊", 
+                            actions =[
+                                MessageAction( 
+                                    label= msg[3:] + " 個股資訊",
+                                    text= "個股資訊 " + msg[3:]),
+                                MessageAction( 
+                                    label= msg[3:] + " 個股新聞",
+                                    text= "個股新聞 " + msg[3:]),
+                            ]
+                        ),
+                        CarouselColumn( 
+                            thumbnail_image_url ="https://external-preview.redd.it/sE2_6uZFii80RFYt5s8n8jAngSnC130BAp1HSrca404.jpg?width=640&crop=smart&auto=webp&s=fe7b27b198634080b3156862a82e2bff993a9b1b",
+                            title = msg[3:] + " 股票資訊", 
+                            text ="請點選想查詢的股票資訊", 
+                            actions =[
+                                MessageAction( 
+                                    label= msg[3:] + " 最新分鐘圖",
+                                    text= "最新分鐘圖 " + msg[3:]), 
+                                MessageAction( 
+                                    label= msg[3:] + " 日線圖",
+                                    text= "日線圖 " + msg[3:]),  
+                            ]
+                        ),
+                        CarouselColumn( 
+                            thumbnail_image_url ="https://external-preview.redd.it/sE2_6uZFii80RFYt5s8n8jAngSnC130BAp1HSrca404.jpg?width=640&crop=smart&auto=webp&s=fe7b27b198634080b3156862a82e2bff993a9b1b",
+                            title = msg[3:] + " 股利資訊", 
+                            text ="請點選想查詢的股票資訊", 
+                            actions =[
+                                MessageAction( 
+                                    label= msg[3:] + " 平均股利",
+                                    text= "平均股利 " + msg[3:]),
+                                MessageAction( 
+                                    label= msg[3:] + " 歷年股利",
+                                    text= "歷年股利 " + msg[3:])
+                            ]
+                        ),                               
+                    ]
+                ) 
             )
-        )
         line_bot_api.reply_message(event.reply_token, buttons_template_message)
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
-
+        
+        
     if '大戶籌碼 ' in msg:
         flex_message = TextSendMessage(text="請選擇要顯示的買賣超資訊",
                                        quick_reply=QuickReply(items=[
