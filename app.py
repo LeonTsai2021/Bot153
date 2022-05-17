@@ -39,66 +39,6 @@ def handle_message(event):
     msg = text = event.message.text
     reply = ''
 
-    if "你要去哪裡" in msg:
-        location_message = LocationSendMessage(
-            title="撒哈拉之眼",
-            address="茅利塔尼亞Chinguetti",
-            latitude=21.105435252619067,
-            longitude=-11.387778030065078
-        )
-        line_bot_api.reply_message(event.reply_token, location_message)
-
-    if "股票 " in msg:
-        buttons_template_message = TemplateSendMessage(
-            alt_text="股票資訊",
-            template=CarouselTemplate(
-                columns=[
-                    CarouselColumn(
-                        thumbnail_image_url="https://external-preview.redd.it/sE2_6uZFii80RFYt5s8n8jAngSnC130BAp1HSrca404.jpg?width=640&crop=smart&auto=webp&s=fe7b27b198634080b3156862a82e2bff993a9b1b",
-                        title=msg[3:] + " 股票資訊",
-                        text="請點選想查詢的股票資訊",
-                        actions=[
-                            MessageAction(
-                                label=msg[3:] + " 個股資訊",
-                                text="個股資訊 " + msg[3:]),
-                            MessageAction(
-                                label=msg[3:] + " 個股新聞",
-                                text="個股新聞 " + msg[3:]),
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url="https://external-preview.redd.it/sE2_6uZFii80RFYt5s8n8jAngSnC130BAp1HSrca404.jpg?width=640&crop=smart&auto=webp&s=fe7b27b198634080b3156862a82e2bff993a9b1b",
-                        title=msg[3:] + " 股票資訊",
-                        text="請點選想查詢的股票資訊",
-                        actions=[
-                            MessageAction(
-                                label=msg[3:] + " 最新分鐘圖",
-                                text="最新分鐘圖 " + msg[3:]),
-                            MessageAction(
-                                label=msg[3:] + " 日線圖",
-                                text="日線圖 " + msg[3:]),
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url="https://external-preview.redd.it/sE2_6uZFii80RFYt5s8n8jAngSnC130BAp1HSrca404.jpg?width=640&crop=smart&auto=webp&s=fe7b27b198634080b3156862a82e2bff993a9b1b",
-                        title=msg[3:] + " 法人買賣超",
-                        text="請點選想查詢的股票資訊",
-                        actions=[
-                            MessageAction(
-                                label=msg[3:] + " 大戶籌碼",
-                                text="大戶籌碼 " + msg[3:]),
-                            MessageAction(
-                                label=msg[3:] + " 同業排名",
-                                text="同業排名 " + msg[3:])
-                        ]
-                    ),
-                ]
-            )
-        )
-        line_bot_api.reply_message(event.reply_token, buttons_template_message)
-    else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
-
     if '你是誰' in msg:
         sticker_message = StickerSendMessage(
             package_id='1070',
