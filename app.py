@@ -48,30 +48,6 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, location_message)
 
-    if "股票 " in msg:
-         buttons_template_message = TemplateSendMessage(
-         alt_text = "股票資訊",
-        template=CarouselTemplate( 
-            columns=[ 
-                    CarouselColumn( 
-                        thumbnail_image_url ="https://external-preview.redd.it/sE2_6uZFii80RFYt5s8n8jAngSnC130BAp1HSrca404.jpg?width=640&crop=smart&auto=webp&s=fe7b27b198634080b3156862a82e2bff993a9b1b",
-                        title = msg + " 股票資訊", 
-                        text ="請點選想查詢的股票資訊", 
-                        actions =[
-                            MessageAction( 
-                                label= msg[3:] + " 個股資訊",
-                                text= "個股資訊 " + msg[3:]),
-                            MessageAction( 
-                                label= msg[3:] + " 個股新聞",
-                                text= "個股新聞 " + msg[3:])
-                        ]
-                    )
-                ]
-            )
-         )
-         line_bot_api.reply_message(event.reply_token, buttons_template_message)
-    else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
     if '你是誰' in msg:
         sticker_message = StickerSendMessage(
             package_id='1070',
